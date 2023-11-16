@@ -19,7 +19,7 @@ def sort_json_list(json_list, key_to_sort, n, ascending):
 
 
 #sorts list of professor objects based on tags
-def get_top_professors_for_tag(prof_list : list, key_to_sort, n, ascending) :
+def get_top_professors_for_tag(prof_list : list, tag_to_sort, n, ascending) :
 
     result_list = [] #list of prof dicts than can be passed into helper
     for prof in prof_list:
