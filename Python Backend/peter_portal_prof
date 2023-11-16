@@ -1,0 +1,72 @@
+import requests
+from urllib.parse import urlencode
+
+GRADE_BASE_URL = "https://api.peterportal.org/rest/v0/grades"
+
+def get_teachers(year_start, year_end, department, number):
+    base_url = "https://api.peterportal.org/rest/v0/grades"
+    common_params = {
+        'department': department,
+        'number': number
+    }
+    year = ""
+    for i in range(year_start, year_end):
+        year += str(i) + "-" + str((i + 1) % 1000) + ";"
+    raw_params = {
+        'year': year[:-1]
+    }
+    # Combine common and raw parameters
+    raw_url = f"{GRADE_BASE_URL}/raw?{urlencode({**common_params, **raw_params})}"
+    return raw_url
+
+class Professor:
+    def __init__(dictionary,prof):
+        self._name = name
+        self._mean = calculate_mean_gpa(dictionary,self.name)
+        self._retake_rate = retake_rate(dictionary,self.name)
+
+    def calculate_mean_gpa(dictionary,prof):
+        lists = []
+        for i in dicts:
+            if i['instructor'] == prof:
+                lists.append(i['averageGPA'])
+        lists = [i for i in lists if i is not None]
+        return sum(lists) / len(lists)
+    
+    def calculate_grade_rate(d, grade, teacher):
+        grades = 0
+        size = 0
+        for i in d:
+            if i['instructor'] == teacher:
+                a_grade = i['gradeACount']
+                b_grade = i['gradeBCount']
+                c_grade = i['gradeCCount']
+                d_grade = i['gradeDCount']
+                f_grade = i['gradeFCount']
+                total_student = a_grade+b_grade+c_grade+d_grade+f_grade
+                if grade == "A":
+                    grades += a_grade/total_student
+                elif grade == "B":
+                    grades += (a_grade+b_grade) / total_student
+                elif grade == "C":
+                    grades += (a_grade+b_grade+c_grade) / total_student
+                elif grade == "D":
+                    grades += (a_grade+b_grade+c_grade+d_grade) / total_student
+                else:
+                    grades += (a_grade+b_grade+c_grade+d_grade+f_grade) / total_student
+                size += 1
+        return grades/size
+
+    def retake_rate(d,teacher):
+        return 1-calculate_grade_rate(d, "C", teacher)
+
+
+if __name__ == "__main__":
+    u = get_teachers(2010, 2023, "I&C SCI", "51")
+    d = requests.get(u).json()
+    x = {i['instructor'] for i in d if i['instructor'] != 'UNKNOWN, INSTRUCTOR'}
+    print(x)
+    calculate_mean_gpa(d, "WONG-MA, J.")
+    # print(requests.get(u).json())
+
+# See PyCharm help at https://www.jetbrains.com/help/pycharm/
