@@ -26,6 +26,6 @@ def get_top_professors_for_tag(prof_list : list, tag_to_sort, n, ascending) :
         prof_tags_dict = prof.get_tag_freq()
         result_list.append(prof_tags_dict)
         
-    return sort_json_list(json_list, key_to_sort, n, ascending)
+    return sort_json_list(json_list, tag_to_sort, n, ascending)
         
     
