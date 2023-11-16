@@ -1,0 +1,36 @@
+/* Add your styles here */
+#questionContainer {
+    max-width: 600px;
+    margin: auto;
+    padding: 20px;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+}
+
+.question {
+    margin-bottom: 20px;
+}
+
+label {
+    display: flex;
+    align-items: center;
+    margin-bottom: 10px;
+    cursor: pointer;
+}
+
+input[type="radio"] {
+    display: none;
+}
+
+.circle {
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+    border: 2px solid #000;
+    margin-right: 10px;
+}
+
+input[type="radio"]:checked + .circle {
+    background-color: #000;
+    border-color: #000;
+}

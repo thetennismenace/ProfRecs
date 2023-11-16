@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="styles.css">
+    <title>Professor Recommender</title>
+</head>
+<body>
+    <div id="departmentForm">
+        <h1>Select Department and Enter Course:</h1>
+
+        <label for="department">Select Department:</label>
+        <select id="department" name="department">
+            <!-- Add department options dynamically or hardcode them -->
+            <option value="I&C SCI">I&C SCI</option>
+            <option value="COMPSCI">COMPSCI</option>
+            <!-- Add more department options as needed -->
+        </select>
+
+        <label for="courseName">Enter Course Name:</label>
+        <input type="text" id="courseName" name="courseName" required>
+
+        <button onclick="loadQuestionnaire()">Submit</button>
+    </div>
+
+    <div id="questionnaireContainer" style="display: none;">
+        <!-- The questionnaire HTML content will be loaded here -->
+    </div>
+
+    <div id="resultContainer">
+        <!-- Display results here after submission -->
+    </div>
+
+    <script src="scripts.js"></script>
+</body>
+</html>
